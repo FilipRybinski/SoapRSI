@@ -4,6 +4,11 @@ public class Reservation {
     private String id;
     private Ticket ticket;
     private String reservationCode;
+
+    public Reservation() {
+        // Default constructor
+    }
+
     public Reservation(String id, Ticket ticket, String reservationCode) {
         this.id = id;
         this.ticket = ticket;

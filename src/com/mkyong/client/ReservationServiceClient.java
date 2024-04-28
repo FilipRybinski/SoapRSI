@@ -1,10 +1,14 @@
 package com.mkyong.client;
 
+import java.awt.*;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
+import com.mkyong.models.Reservation;
 import com.mkyong.ws.ReservationService;
 
 public class ReservationServiceClient {
@@ -30,7 +34,14 @@ public class ReservationServiceClient {
         System.out.println(confirmation);
 
         System.out.println("Sprawdzenie rezerwacji:");
-        String reservationDetails = reservationService.checkReservation("0");
-        System.out.println(reservationDetails);
+        Reservation reservationDetails = reservationService.checkReservation("0");
+        System.out.println(reservationDetails.toString());
+
+        byte[] pdfContent = reservationService.generateTicketPDF("0");
+        File tempFile = File.createTempFile("reservation_ticket", ".pdf");
+        try (FileOutputStream fos = new FileOutputStream(tempFile)) {
+            fos.write(pdfContent);
+        }
+        Desktop.getDesktop().open(tempFile);
     }
 }

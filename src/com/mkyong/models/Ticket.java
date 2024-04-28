@@ -5,6 +5,7 @@ public class Ticket {
     private Flight flight;
     private String customerName;
     private boolean confirmed;
+    public Ticket (){}
     public Ticket(String id, Flight flight, String customerName, boolean confirmed) {
         this.id = id;
         this.flight = flight;

@@ -7,6 +7,8 @@ public class Flight {
     private String date;
     private String time;
 
+    public Flight(){}
+
     public Flight(String id, String fromCity, String toCity, String date, String time) {
         this.id = id;
         this.fromCity = fromCity;

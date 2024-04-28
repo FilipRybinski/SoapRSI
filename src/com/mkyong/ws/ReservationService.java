@@ -2,7 +2,9 @@ package com.mkyong.ws;
 
 import com.mkyong.exception.CustomException;
 import com.mkyong.models.Flight;
+import com.mkyong.models.Reservation;
 
+import javax.activation.DataHandler;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
@@ -28,7 +30,9 @@ public interface ReservationService {
 	String confirmPurchase(String ticketId);
 
 	@WebMethod
-	String checkReservation(String reservationId);
+	Reservation checkReservation(String reservationId) throws Exception;
 
+	@WebMethod
+	byte[] generateTicketPDF(String ticketId);
 	
 }
